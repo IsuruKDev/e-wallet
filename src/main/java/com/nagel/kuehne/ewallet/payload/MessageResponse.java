@@ -1,2 +1,10 @@
-package com.nagel.kuehne.ewallet.payload;public class MessageResponse {
+package com.nagel.kuehne.ewallet.payload;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+
+@Data @AllArgsConstructor
+public class MessageResponse {
+
+    private String message;
 }
