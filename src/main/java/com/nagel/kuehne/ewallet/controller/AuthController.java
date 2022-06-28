@@ -40,12 +40,6 @@ public class AuthController {
     @Autowired
     RoleRepository roleRepository;
 
-    @Autowired
-    PasswordEncoder encoder;
-
-    @Autowired
-    JwtUtils jwtUtils;
-
     @PostMapping("/signin")
     public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest){
 
@@ -69,6 +63,12 @@ public class AuthController {
                 roles));
     }
 
+    @Autowired
+    PasswordEncoder encoder;
+
+    @Autowired
+    JwtUtils jwtUtils;
+
     @PostMapping("/signup")
     public ResponseEntity<?> registerUser(@Valid @RequestBody SignUpRequest signUpRequest){
 
@@ -79,7 +79,7 @@ public class AuthController {
         }
 
         // Create new user
-        User user = new User(signUpRequest.getUsername(),encoder.encode(signUpRequest.getUsername()));
+        User user = new User(signUpRequest.getUsername(),encoder.encode(signUpRequest.getPassword()));
 
         Set<String> clientRoles = signUpRequest.getRole();
         Set<Role> roles = new HashSet<>();

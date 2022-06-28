@@ -23,11 +23,9 @@ public class User {
     private long userId;
 
     @NotBlank
-    @Size(max = 10)
     private String username;
 
     @NotBlank
-    @Size(max = 20)
     private String password;
 
     public User(String username, String password){
@@ -37,7 +35,7 @@ public class User {
 
     public User(){}
 
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "user_roles",
             joinColumns = @JoinColumn(name = "user_id"),
     inverseJoinColumns = @JoinColumn(name = "role_id"))

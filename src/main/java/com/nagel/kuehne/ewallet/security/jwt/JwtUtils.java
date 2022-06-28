@@ -19,7 +19,7 @@ public class JwtUtils {
     private String jwtSecret;
 
     @Value("${kuehne.nagel.wallet.jwtExpirationMs}")
-    private String jwtExpirationMs;
+    private int jwtExpirationMs;
 
     public String generateJwtToken(Authentication authentication) {
 
@@ -29,7 +29,7 @@ public class JwtUtils {
                 .setSubject(userPrincipal.getUsername())
                 .setIssuedAt(new Date())
                 .setExpiration(new Date((new Date()).getTime() + jwtExpirationMs))
-                .signWith(SignatureAlgorithm.ES512, jwtSecret)
+                .signWith(SignatureAlgorithm.HS512, jwtSecret)
                 .compact();
     }
 

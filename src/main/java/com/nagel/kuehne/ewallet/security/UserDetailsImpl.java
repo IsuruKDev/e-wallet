@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
-@AllArgsConstructor @Data
+
 public class UserDetailsImpl implements UserDetails {
 
     private Long userId;
@@ -22,6 +22,17 @@ public class UserDetailsImpl implements UserDetails {
     private String password;
 
     private Collection<? extends GrantedAuthority> authorities;
+
+    public UserDetailsImpl(long userId,
+                           String username,
+                           String password,
+                           Collection<? extends GrantedAuthority> authorities){
+
+        this.userId = userId;
+        this.username = username;
+        this.password = password;
+        this.authorities = authorities;
+    }
 
     public static UserDetailsImpl build(User user){
         List<GrantedAuthority> authorities = user
@@ -41,6 +52,10 @@ public class UserDetailsImpl implements UserDetails {
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return authorities;
+    }
+
+    public Long getUserId() {
+        return userId;
     }
 
     @Override
