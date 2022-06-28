@@ -10,15 +10,7 @@ import javax.persistence.*;
 public class Role {
 
     @Id
-    @SequenceGenerator(
-            name = "role_sequence",
-            sequenceName = "role_sequence",
-            allocationSize = 1
-    )
-    @GeneratedValue(
-            strategy = GenerationType.SEQUENCE,
-            generator = "role_sequence"
-    )
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int roleId;
 
     @Enumerated(EnumType.STRING)
