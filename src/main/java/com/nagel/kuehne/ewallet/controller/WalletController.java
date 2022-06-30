@@ -8,18 +8,19 @@ import com.nagel.kuehne.ewallet.security.UserDetailsImpl;
 import com.nagel.kuehne.ewallet.service.WalletService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.math.BigDecimal;
-import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/api/wallet")
+@PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
 public class WalletController {
 
     @Autowired
@@ -123,6 +124,7 @@ public class WalletController {
     private User getLoggedUser(){
 
         UserDetailsImpl userDetails = (UserDetailsImpl) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        return userDetails.getUser();
+        User user = userRepository.findById(userDetails.getUserId()).get();
+        return user;
     }
 }

@@ -11,5 +11,4 @@ public class WalletToWalletRequest {
     private long creditWalletId;
     private long debitWalletId;
     private double transactionalAmount;
-    private String message;
 }
