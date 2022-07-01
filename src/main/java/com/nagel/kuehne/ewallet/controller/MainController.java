@@ -18,13 +18,13 @@ public class MainController {
 
     @GetMapping("/user")
     @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
-    public String helloUser(){
+    public String userAccess(){
         return "User Content";
     }
 
     @GetMapping("admin")
     @PreAuthorize("hasRole('ADMIN')")
-    public String helloAdmin(){
+    public String adminAccess(){
         return "Admin Content";
     }
 
