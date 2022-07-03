@@ -1,12 +1,13 @@
 package com.nagel.kuehne.ewallet.payload;
 
+import lombok.Builder;
 import lombok.Data;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.util.Set;
 
-@Data
+@Data @Builder
 public class SignUpRequest {
 
     @NotBlank

@@ -31,6 +31,13 @@
 * By using docker compose
     >docker compose up .
 
+After run the application please execute the following SQL queries before accessing the 
+APIs. Which will create both user roles in the database.
+
+  >INSERT INTO ewalletdb.roles(name) VALUES('ROLE_USER');
+
+  >INSERT INTO ewalletdb.roles(name) VALUES('ROLE_ADMIN');
+
 ## URLs
 
 * Demonstrate 3 types of users (admin, user & any)

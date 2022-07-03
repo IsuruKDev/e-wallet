@@ -4,6 +4,8 @@ import com.nagel.kuehne.ewallet.model.User;
 import com.nagel.kuehne.ewallet.model.Wallet;
 import com.nagel.kuehne.ewallet.payload.WalletToWalletResponse;
 import com.nagel.kuehne.ewallet.repository.WalletRepository;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -11,7 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.math.BigDecimal;
 import java.util.List;
 
-@Service @Transactional
+@Service @Transactional @AllArgsConstructor @NoArgsConstructor
 public class WalletService {
 
     @Autowired
